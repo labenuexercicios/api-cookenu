@@ -1,0 +1,19 @@
+CREATE TABLE Cookenu_Users (
+  id TEXT PRIMARY KEY UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL
+);
+
+CREATE TABLE Cookenu_Recipes (
+  id TEXT PRIMARY KEY UNIQUE NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  createdAt TEXT NOT NULL,
+  imageUrl TEXT NOT NULL,
+  creatorId TEXT NOT NULL,
+  FOREIGN KEY (creatorId) REFERENCES Cookenu_Users (id)
+			ON UPDATE CASCADE
+			ON DELETE CASCADE
+);
+
